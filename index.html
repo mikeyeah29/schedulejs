@@ -20,73 +20,36 @@
 		</div>
 
 		<div class="weekDays">
-			<div class="wd1">{{ day1.format('MMM Do') }}</div>
-			<div class="wd2">{{ day2.format('MMM Do') }}</div>
-			<div class="wd3">{{ day3.format('MMM Do') }}</div>
-			<div class="wd4">{{ day4.format('MMM Do') }}</div>
-			<div class="wd5">{{ day5.format('MMM Do') }}</div>
-			<div class="wd6">{{ day6.format('MMM Do') }}</div>
-			<div class="wd7">{{ day7.format('MMM Do') }}</div> 
+			<div class="wd" v-for="day in days">{{ day.format('MMM Do') }}</div>
 		</div>
 		<div class="timelist">
+			<div class="hour" v-for="(hour, index) in hours">
+				<div class="time">{{ hour.time }}:00</div>
+				<div class="eventBlock">
+					<div class="shdle_event" v-for="event in hours[index].events">
+						<p>{{ event.label }}</p>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- <div class="hour">
+				<div class="time">0:00</div>
+				<div class="eventBlock">
+					<div class="shdle_event" v-for="event in hours[1].events">
+						<p>{{ event.label }}</p>
+					</div>
+				</div>
+			</div>
 			<div class="hour">
-				<div class="time">9:00</div>
+				<div class="time">1:00</div>
 				<div class="eventBlock"></div>
 			</div>
 			<div class="hour">
-				<div class="time">9:00</div>
+				<div class="time">2:00</div>
 				<div class="eventBlock"></div>
-				<!-- <div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div> -->
-			</div>
-			<div class="hour">
-				<div class="time">9:00</div>
-				<div class="eventBlock"></div>
-				<!-- <div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div> -->
-			</div>
-			<div class="hour">
-				<div class="time">9:00</div>
-				<div class="eventBlock"></div>
-				<!-- <div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div> -->
-			</div>
-			<div class="hour">
-				<div class="time">9:00</div>
-				<div class="eventBlock"></div>
-				<!-- <div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div> -->
-			</div>
-			<div class="hour">
-				<div class="time">9:00</div>
-				<div class="eventBlock"></div>
-				<!-- <div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div> -->
-			</div>
-			<div class="hour">
-				<div class="time">9:00</div>
-				<div class="eventBlock"></div>
-				<!-- <div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div>
-				<div class="eventBlock"></div> -->
-			</div>
+			</div> -->
 		</div>
 
 	</div>
