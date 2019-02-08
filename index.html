@@ -18,7 +18,6 @@
 			<div class="month">{{ month }}</div>
 			<div class="next" v-on:click="loadNextWeek">Next week</div>
 		</div>
-
 		<div class="weekDays">
 			<div class="wd" v-for="day in days">{{ day.format('MMM Do') }}</div>
 		</div>
@@ -28,32 +27,18 @@
 				<div class="eventBlock">
 					<div class="shdle_event" 
 						v-for="event in hours[index].events" 
-						v-bind:style="{left: event.left, height: event.height}">
+						v-bind:style="{
+							left: event.left, 
+							height: event.height, 
+							background: event.color,
+							top: event.top}">
+						<p class="person">{{ event.person }}</p>
 						<p>{{ event.label }}</p>
 					</div>
 				</div>
 			</div>
-
-
-
-			<!-- <div class="hour">
-				<div class="time">0:00</div>
-				<div class="eventBlock">
-					<div class="shdle_event" v-for="event in hours[1].events">
-						<p>{{ event.label }}</p>
-					</div>
-				</div>
-			</div>
-			<div class="hour">
-				<div class="time">1:00</div>
-				<div class="eventBlock"></div>
-			</div>
-			<div class="hour">
-				<div class="time">2:00</div>
-				<div class="eventBlock"></div>
-			</div> -->
+			<div class="current_time_bar" v-bind:style="{top: timebar_top}"></div>
 		</div>
-
 	</div>
 
 	<script type="text/javascript" src="vue.js"></script>
