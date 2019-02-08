@@ -26,7 +26,9 @@
 			<div class="hour" v-for="(hour, index) in hours">
 				<div class="time">{{ hour.time }}:00</div>
 				<div class="eventBlock">
-					<div class="shdle_event" v-for="event in hours[index].events">
+					<div class="shdle_event" 
+						v-for="event in hours[index].events" 
+						v-bind:style="{left: event.left, height: event.height}">
 						<p>{{ event.label }}</p>
 					</div>
 				</div>

@@ -19,11 +19,19 @@
 		height: 70px;
 		.time {
 			width: 60px;
+		    float: left;
 		}
 		.eventBlock {
 			width: 700px;
 			margin-left: 60px;
 			position: relative;
 		}
+	}
+	.shdle_event {
+		background: aquamarine;
+		width: 100px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
 	}
 }

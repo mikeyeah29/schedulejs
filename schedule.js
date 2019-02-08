@@ -1,23 +1,40 @@
 (function(){
 
+	// TODO
+		//- figure out precise height based on time
+		//- figure out right top based on minuets in hour
+		//- output current red line
+		//- update month header
+		//- output all event detail in eventBlock
+		//- onhover bring up event edit box
+
 	var events = [
 		{
 			date: new Date(2019, 1, 14, 10, 20),
 			time_from: '1000',
 			time_to: '1200',
+			duration: 2, // hours
 			label: 'valentines'
+		},
+		{
+			date: new Date(2019, 1, 14, 10, 20),
+			time_from: '1400',
+			time_to: '1530',
+			duration: 2, // hours
+			label: 'pay bill'
 		},
 		{
 			date: new Date(2019, 0, 26, 10, 20),
 			time_from: '1430',
 			time_to: '1530',
+			duration: 1, // hours
 			label: 'otherthing'
 		}
 	];
 
 	function createHoursArray(){
 		var arr = [];
-		for(i=0;i<24;i++){
+		for(i=7;i<21;i++){
 			arr.push({ events: [], time: i });
 		}	
 		return arr;
@@ -61,22 +78,25 @@
 				var weekEvents = [];
 				for(i=0;i<this.events.length;i++){
 					var cEvent = this.events[i];
-					if(moment(cEvent.date).isBetween(this.days[0], this.days[6], 'days', '[]')){
-						console.log('the ', cEvent.label, ' is this week');
-						weekEvents.push(cEvent);
+					var eventDate = moment(cEvent.date).format('MMM Do YY');
+					for(j=0;j<7;j++){
+						if(this.days[j].format('MMM Do YY') == eventDate){
+							cEvent.left = (j * 100) + 'px';
+							cEvent.height = (cEvent.duration * 70) + 'px';
+							weekEvents.push(cEvent);
+						}
 					}
 				}
-				this.updateHours(weekEvents);
+				this.hours = this.updateHours(weekEvents);
 			},
 			updateHours: function(weekEvents){
 				var hourArr = createHoursArray();
 				for(i=0;i<weekEvents.length;i++){
 					var cEvent = weekEvents[i];
 					var hourIndex = Number(this.getHour(cEvent.time_from));
-					hourArr[hourIndex].events.push(weekEvents[i]);
+					hourArr[hourIndex - 7].events.push(weekEvents[i]);
 				}
-				console.log(hourArr);
-				this.hours = hourArr;
+				return hourArr;
 			},
 			getHour: function(time){
 				time = time.substring(0, 2);
@@ -87,5 +107,7 @@
 			}
 		}
 	});
+
+	vueSchedule.loadEvents();
 
 })();

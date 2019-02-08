@@ -15,10 +15,17 @@
   .vueSchedule .hour {
     height: 70px; }
     .vueSchedule .hour .time {
-      width: 60px; }
+      width: 60px;
+      float: left; }
     .vueSchedule .hour .eventBlock {
       width: 700px;
       margin-left: 60px;
       position: relative; }
+  .vueSchedule .shdle_event {
+    background: aquamarine;
+    width: 100px;
+    position: absolute;
+    top: 0px;
+    left: 0px; }
 
 /*# sourceMappingURL=style.css.map */
